@@ -3,10 +3,31 @@
 //const resource = process.argv[3];
 
 //console.log(method, resource);
-let [, , method, resource]= process.argv;
+let [, , method, resource, ...params]= process.argv;
 
 method= method.toUpperCase();
 resource= resource.toLowerCase();
+
+if (method= "POST" && resource == "products"){
+
+    const [title, price, category] = params;
+
+
+    const product = { 
+        title, 
+        price,
+        category
+     };
+
+    fetch('https://fakestoreapi.com/products', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(product)
+    })
+    .then(response => response.json())
+    .then(data => console.log(data));
+}
+
 
 if (method=="GET"&& resource.startsWith("products/")){
     //const params = resource.split("/");
