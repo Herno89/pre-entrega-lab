@@ -1,0 +1,14 @@
+{
+  "name": "preentrega",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  
+  "author": "Hernan Rugolo",
+  "license": "MIT",
+  "type": "module"
+
+}
