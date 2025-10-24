@@ -31,7 +31,10 @@ if (method== "POST" && resource == "products"){
 if (method == "PUT"&& resource.startsWith("products/")){
     
     let id = resource.split("/")[1];
-    id = parseInt(id);   
+    id = parseInt(id);
+        if (isNaN(id)|| id<=0){
+        console.log("No es un numero");
+    }else {   
     const [title, price, category] = params;
 
 
@@ -49,17 +52,23 @@ if (method == "PUT"&& resource.startsWith("products/")){
     .then(response => response.json())
     .then(data => console.log(data));
 }
+}
 
 //Eliminar
 if (method == "DELETE" && resource.startsWith("products/")){
 
     const id = parseInt(resource.split("/")[1]);
+    if (isNaN(id)|| id<=0){
+    console.log("No es un numero");
+    }else {
 
-    fetch('https://fakestoreapi.com/products/'+id, {
-  method: 'DELETE'
-})
-  .then(response => response.json())
-  .then(data => console.log(data));
+        
+        fetch('https://fakestoreapi.com/products/'+id, {
+            method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => console.log(data));
+    }
 }
 
 
@@ -70,10 +79,13 @@ if (method=="GET"&& resource.startsWith("products/")){
     id = parseInt(id);
     if (isNaN(id)|| id<=0){
         console.log("No es un numero");
-    }    
-    fetch('https://fakestoreapi.com/products/'+id)
-    .then(response => response.json())
-    .then(data => console.log(data));
+    }else {
+        
+        
+        fetch('https://fakestoreapi.com/products/'+id)
+        .then(response => response.json())
+        .then(data => console.log(data));
+    }
 }
 
 
